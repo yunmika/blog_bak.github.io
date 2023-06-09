@@ -215,9 +215,15 @@
       
         <p><img src="/2023/05/28/PMAT/PMAT.png" alt="img"></p>
 <h1 id="PMAT-an-efficient-assembly-toolkit-for-plant-mitochondrial-genome"><a href="#PMAT-an-efficient-assembly-toolkit-for-plant-mitochondrial-genome" class="headerlink" title="PMAT - an efficient assembly toolkit for plant mitochondrial genome"></a>PMAT - an efficient assembly toolkit for plant mitochondrial genome</h1><p>PMAT is an efficient toolkit for mitochondrial genome assembly. It can correct three-generation sequencing data using <a target="_blank" rel="noopener" href="https://github.com/marbl/canu">canu</a> or <a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo">NextDenovo</a> and then use <a target="_blank" rel="noopener" href="https://evomics.org/learning/assembly-and-alignment/newbler/">Newbler</a> to assemble it. Finally, PMAT can identify mitochondrial genome sequences and generate mitochondrial genome structures.</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h4 id="install-by-using-git"><a href="#install-by-using-git" class="headerlink" title="install by using git"></a>install by using git</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/bichangwei/PMAT.git<br>cd PMAT/bin<br>chmod a+x PMAT<br>PMAT --help<br></code></pre></td></tr></table></figure>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h4 id="install-by-using-git"><a href="#install-by-using-git" class="headerlink" title="install by using git"></a>install by using git</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/bichangwei/PMAT.git
+<span class="token builtin class-name">cd</span> PMAT/bin
+<span class="token function">chmod</span> a+x PMAT
+PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="install-from-source"><a href="#install-from-source" class="headerlink" title="install from source"></a>install from source</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">unzip PMAT-main.zip<br>cd PMAT/bin<br>chmod a+x PMAT<br>PMAT --help<br></code></pre></td></tr></table></figure>
+<h4 id="install-from-source"><a href="#install-from-source" class="headerlink" title="install from source"></a>install from source</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> PMAT-main.zip
+<span class="token builtin class-name">cd</span> PMAT/bin
+<span class="token function">chmod</span> a+x PMAT
+PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Repuirement"><a href="#Repuirement" class="headerlink" title="Repuirement"></a>Repuirement</h2><h6 id="When-inputting-HiFi-reads-the-following-software-are-required"><a href="#When-inputting-HiFi-reads-the-following-software-are-required" class="headerlink" title="When inputting HiFi reads, the following software are required:"></a>When inputting HiFi reads, the following software are required:</h6><ul>
 <li><a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download"><strong>blastn</strong></a>  Needs to be installed in the <code>PATH</code>.</li>
@@ -228,13 +234,46 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/marbl/canu"><strong>canu</strong></a> or <a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo"><strong>NextDenovo</strong></a>    Suggested to be installed in the <code>PATH</code>.</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly"><strong>singularity</strong></a></li>
 </ul>
-<h2 id="options-and-usage"><a href="#options-and-usage" class="headerlink" title="options and usage"></a>options and usage</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs shell">Run `PMAT --help` to view the program&#x27;s usage guide.<br><br>    usage: PMAT &lt;command&gt; &lt;arguments&gt;<br>    <br>     ______     ___           __        ____       _____________ <br>    |   __  \  |   \        /   |      / __ \     |_____   _____|<br>    |  |__)  | | |\ \      / /| |     / /  \ \          | |      <br>    |   ____/  | | \ \    / / | |    / /____\ \         | |      <br>    |  |       | |  \ \  / /  | |   / /______\ \        | |      <br>    |  |       | |   \ \/ /   | |  / /        \ \       | |      <br>    |__|       |_|    \__/    |_| /_/          \_\      |_|<br><br><br>    PMAT            an efficient assembly toolkit for plant mitochondrial genome<br>    Version         1.1.0<br>    Contributors    Bi,C. and Han,F.<br>    Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn<br>    <br>    For more information about PMAT, see https://github.com/bichangwei/PMAT<br><br>    optional arguments:<br>        -h, --help     show this help message and exit<br>        -v, --version  show program&#x27;s version number and exit<br><br>    Commands:<br><br>        all         an efficient assembly toolkit for plant mitochondrial genome<br>    <br>        graphBuild  Structure assembly based on Newbler output<br></code></pre></td></tr></table></figure>
+<h2 id="options-and-usage"><a href="#options-and-usage" class="headerlink" title="options and usage"></a>options and usage</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Run <span class="token variable"><span class="token variable">`</span>PMAT <span class="token parameter variable">--help</span><span class="token variable">`</span></span> to view the program<span class="token string">'s usage guide.
+
+    usage: PMAT &lt;command> &lt;arguments>
+    
+     ______     ___           __        ____       _____________ 
+    |   __  \  |   \        /   |      / __ \     |_____   _____|
+    |  |__)  | | |\ \      / /| |     / /  \ \          | |      
+    |   ____/  | | \ \    / / | |    / /____\ \         | |      
+    |  |       | |  \ \  / /  | |   / /______\ \        | |      
+    |  |       | |   \ \/ /   | |  / /        \ \       | |      
+    |__|       |_|    \__/    |_| /_/          \_\      |_|
+
+
+    PMAT            an efficient assembly toolkit for plant mitochondrial genome
+    Version         1.1.0
+    Contributors    Bi,C. and Han,F.
+    Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
+    
+    For more information about PMAT, see https://github.com/bichangwei/PMAT
+
+    optional arguments:
+        -h, --help     show this help message and exit
+        -v, --version  show program'</span>s version number and <span class="token builtin class-name">exit</span>
+
+    Commands:
+
+        all         an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
+    
+        graphBuild  Structure assembly based on Newbler output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
 <li><p><strong>all</strong> – De novo analysis of sequencing data (hifi, clr and ont).</p>
 <p>  run <code>PMAT all --help</code> view the usage guide for the all command.</p>
 <p>  Example:</p>
-  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># If canu or NextDenovo is not installed in the PATH when using clr or ont data, you need to provide the parameter -cp or -np.</span><br><span class="hljs-attribute">For</span> HiFi data    : PMAT <span class="hljs-literal">all</span> -i hifi.fastq.gz -o hifi_assembly -st hifi -g <span class="hljs-number">500</span>M<br><span class="hljs-attribute">For</span> ONT raw data : PMAT <span class="hljs-literal">all</span> -i ont.fastq.gz -o ont_assembly -st ont -cfg ont_correct.cfg -tk <span class="hljs-literal">all</span> -g <span class="hljs-number">500</span>M<br><span class="hljs-attribute">For</span> CLR raw data : PMAT <span class="hljs-literal">all</span> -i ont.fastq.gz -o clr_assembly -st clr -cfg clr_correct.cfg -tk <span class="hljs-literal">all</span> -g <span class="hljs-number">500</span>M<br><span class="hljs-attribute">For</span> ONT corrected data : PMAT <span class="hljs-literal">all</span> -i corrected.fa -o ont_assembly -st ont -tk p1 -g <span class="hljs-number">500</span>M<br><span class="hljs-attribute">For</span> CLR corrected data : PMAT <span class="hljs-literal">all</span> -i corrected.fa -o clr_assembly -st clr -tk p1 -g <span class="hljs-number">500</span>M<br></code></pre></td></tr></table></figure>
+  <pre class="line-numbers language-none"><code class="language-none"># If canu or NextDenovo is not installed in the PATH when using clr or ont data, you need to provide the parameter -cp or -np.
+For HiFi data    : PMAT all -i hifi.fastq.gz -o hifi_assembly -st hifi -g 500M
+For ONT raw data : PMAT all -i ont.fastq.gz -o ont_assembly -st ont -cfg ont_correct.cfg -tk all -g 500M
+For CLR raw data : PMAT all -i ont.fastq.gz -o clr_assembly -st clr -cfg clr_correct.cfg -tk all -g 500M
+For ONT corrected data : PMAT all -i corrected.fa -o ont_assembly -st ont -tk p1 -g 500M
+For CLR corrected data : PMAT all -i corrected.fa -o clr_assembly -st clr -tk p1 -g 500M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>  notes:</p>
 <pre><code>1. Make sure blastn is installed in the PATH.
@@ -243,14 +282,15 @@
 </li>
 <li><p><strong>graphBuild</strong> – Structure assembly based on Newbler results.<br>  run <code>PMAT graphBuild --help</code> view the usage guide for the graphBuild command.</p>
 <p>  Example:</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">PMAT graphBuild -c PMATContigGraph.txt -a PMATAllContigs.fna -gs 500M -rs 4G -o output<br>PMAT graphBuild -c PMATContigGraph.txt -a PMATAllContigs.fna -gs 500M -rs hifi.cut20k.fa -s 1 6 8 -o output<br></code></pre></td></tr></table></figure>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT graphBuild <span class="token parameter variable">-c</span> PMATContigGraph.txt <span class="token parameter variable">-a</span> PMATAllContigs.fna <span class="token parameter variable">-gs</span> 500M <span class="token parameter variable">-rs</span> 4G <span class="token parameter variable">-o</span> output
+PMAT graphBuild <span class="token parameter variable">-c</span> PMATContigGraph.txt <span class="token parameter variable">-a</span> PMATAllContigs.fna <span class="token parameter variable">-gs</span> 500M <span class="token parameter variable">-rs</span> hifi.cut20k.fa <span class="token parameter variable">-s</span> <span class="token number">1</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token parameter variable">-o</span> output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>  notes:</p>
 <pre><code>  When using the graphBuild command, the blastn is required and needs to be installed in the PATH.
 </code></pre>
 </li>
 </ul>
 <h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>PMAT version 1.10 (2023.05.05)</p>
-<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi <a href="mailto:&#98;&#x69;&#x63;&#104;&#x77;&#x65;&#x69;&#64;&#110;&#106;&#x66;&#x75;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#x6e;">&#98;&#x69;&#x63;&#104;&#x77;&#x65;&#x69;&#64;&#110;&#106;&#x66;&#x75;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#x6e;</a><br>Fuchuan Han <a href="mailto:&#x68;&#x61;&#x6e;&#x66;&#x63;&#x40;&#99;&#x61;&#x66;&#x2e;&#97;&#x63;&#x2e;&#99;&#110;">&#x68;&#x61;&#x6e;&#x66;&#x63;&#x40;&#99;&#x61;&#x66;&#x2e;&#97;&#x63;&#x2e;&#99;&#110;</a></p>
+<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi <a href="mailto:&#98;&#x69;&#x63;&#104;&#x77;&#101;&#x69;&#64;&#x6e;&#106;&#102;&#117;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#98;&#x69;&#x63;&#104;&#x77;&#101;&#x69;&#64;&#x6e;&#106;&#102;&#117;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#x6e;</a><br>Fuchuan Han <a href="mailto:&#104;&#x61;&#x6e;&#x66;&#99;&#x40;&#99;&#x61;&#102;&#x2e;&#97;&#x63;&#46;&#x63;&#110;">&#104;&#x61;&#x6e;&#x66;&#99;&#x40;&#99;&#x61;&#102;&#x2e;&#97;&#x63;&#46;&#x63;&#110;</a></p>
 
     </div>
 
