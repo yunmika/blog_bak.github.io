@@ -28,7 +28,7 @@
 <meta property="og:description" content="详细介绍一下我们的软件-PMAT">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-09T06:53:16.000Z">
-<meta property="article:modified_time" content="2023-06-11T01:28:07.926Z">
+<meta property="article:modified_time" content="2023-06-11T01:30:56.386Z">
 <meta property="article:author" content="Fuchuan Han">
 <meta name="twitter:card" content="summary">
 
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 09:28:07" itemprop="dateModified" datetime="2023-06-11T09:28:07+08:00">2023-06-11</time>
+                <time title="修改时间：2023-06-11 09:30:56" itemprop="dateModified" datetime="2023-06-11T09:30:56+08:00">2023-06-11</time>
               </span>
 
           
@@ -243,7 +243,7 @@ PMAT <span class="token parameter variable">--help</span><span aria-hidden="true
 
 PMAT            an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
 Version         <span class="token number">1.1</span>.0
-CONTributors    Bi,C. and Han,F.
+Contributors    Bi,C. and Han,F.
 Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
 For <span class="token function">more</span> information about PMAT, see https://github.com/bichangwei/PMAT
@@ -282,8 +282,8 @@ Commands:
 <li><strong>graphBuild</strong> 对组装结果自动检查线粒体基因组序列，并生成gfa文件</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 必选参数</span>
-<span class="token parameter variable">-c</span> <span class="token parameter variable">--CONTigGraph</span>    <span class="token comment">#组装得到的 PMATCONTigGraph.txt</span>
-<span class="token parameter variable">-a</span> <span class="token parameter variable">--AllCONTigGraph</span> <span class="token comment">#组装得到的 PMATAllCONTigs.fna</span>
+<span class="token parameter variable">-c</span> <span class="token parameter variable">--ContigGraph</span>    <span class="token comment">#组装得到的 PMATContigGraph.txt</span>
+<span class="token parameter variable">-a</span> <span class="token parameter variable">--AllContigGraph</span> <span class="token comment">#组装得到的 PMATAllContigs.fna</span>
 <span class="token parameter variable">-o</span> <span class="token parameter variable">--output</span>         <span class="token comment">#输出文件路径</span>
 <span class="token parameter variable">-gs</span> <span class="token parameter variable">--genomesize</span>    <span class="token comment">#物种基因组大小</span>
 <span class="token parameter variable">-rs</span> <span class="token parameter variable">--readsize</span>      <span class="token comment">#组装使用数据量大小</span>
@@ -304,8 +304,8 @@ PMAT all <span class="token parameter variable">-i</span> CLR_corrected_data.fa 
 <ul>
 <li>subsample&#x2F;assembly_seq_subset.0.1.fasta <em>用于组装的数据</em></li>
 <li>subsample&#x2F;assembly_seq.cut20K.fasta     <em>截断为长度为20kb的reads</em></li>
-<li>assembly_result&#x2F;PMATAllCONTigs.fna      <em>组装结果contig序列文件</em></li>
-<li>assembly_result&#x2F;PMATCONTigGraph.txt     <em>组装结果contig连接关系</em></li>
+<li>assembly_result&#x2F;PMATAllContigs.fna      <em>组装结果contig序列文件</em></li>
+<li>assembly_result&#x2F;PMATContigGraph.txt     <em>组装结果contig连接关系</em></li>
 <li>assembly_result&#x2F;PMAT_raw.gfa            <em>用于可视化的线粒体基因组组装初始结果</em></li>
 <li>assembly_result&#x2F;PMAT_master.gfa         <em>用于可视化的线粒体基因组组装优化结果</em></li>
 </ul>
