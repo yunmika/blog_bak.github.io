@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://hanfc.top/2023/05/28/PMAT/PMAT.png">
 <meta property="article:published_time" content="2023-05-28T12:21:02.000Z">
-<meta property="article:modified_time" content="2023-06-06T10:24:48.018Z">
+<meta property="article:modified_time" content="2023-07-23T12:29:13.784Z">
 <meta property="article:author" content="Fuchuan Han">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://hanfc.top/2023/05/28/PMAT/PMAT.png">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-06 18:24:48" itemprop="dateModified" datetime="2023-06-06T18:24:48+08:00">2023-06-06</time>
+                <time title="修改时间：2023-07-23 20:29:13" itemprop="dateModified" datetime="2023-07-23T20:29:13+08:00">2023-07-23</time>
               </span>
 
           
@@ -213,19 +213,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/2023/05/28/PMAT/PMAT.png" alt="img"></p>
-<h1 id="PMAT-an-efficient-assembly-toolkit-for-plant-mitochondrial-genome"><a href="#PMAT-an-efficient-assembly-toolkit-for-plant-mitochondrial-genome" class="headerlink" title="PMAT - an efficient assembly toolkit for plant mitochondrial genome"></a>PMAT - an efficient assembly toolkit for plant mitochondrial genome</h1><p>PMAT is an efficient toolkit for mitochondrial genome assembly. It can correct three-generation sequencing data using <a target="_blank" rel="noopener" href="https://github.com/marbl/canu">canu</a> or <a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo">NextDenovo</a> and then use <a target="_blank" rel="noopener" href="https://evomics.org/learning/assembly-and-alignment/newbler/">Newbler</a> to assemble it. Finally, PMAT can identify mitochondrial genome sequences and generate mitochondrial genome structures.</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h4 id="install-by-using-git"><a href="#install-by-using-git" class="headerlink" title="install by using git"></a>install by using git</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/bichangwei/PMAT.git
+        <h1 id="PMAT"><a href="#PMAT" class="headerlink" title="PMAT"></a><a name="h1">PMAT</a></h1><p>an efficient assembly toolkit for plant mitochondrial genome</p>
+<p><img src="/2023/05/28/PMAT/PMAT.png" alt="img"></p>
+<p>PMAT is an efficient toolkit for mitochondrial genome assembly. It can correct three-generation sequencing data using <a target="_blank" rel="noopener" href="https://github.com/marbl/canu">canu</a> or <a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo">NextDenovo</a> and then use <a target="_blank" rel="noopener" href="https://evomics.org/learning/assembly-and-alignment/newbler/">Newbler</a> to assemble it. Finally, PMAT can identify mitochondrial genome sequences and generate mitochondrial genome structures.</p>
+<ul>
+<li><a href="#h1">PMAT</a></li>
+<li><a href="#C1">Installation</a></li>
+<li><a href="#C2">Repuirement</a></li>
+<li><a href="#C3">options and usage</a></li>
+<li><a href="#C4">autoMito</a></li>
+<li><a href="#C5">graphBuild</a></li>
+<li><a href="#C6">Tips</a></li>
+<li><a href="#C7">Output files</a></li>
+<li><a href="#C6">Version</a></li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a name="C1">Installation</a></h2><h4 id="recommended-installation-method"><a href="#recommended-installation-method" class="headerlink" title="recommended installation method"></a>recommended installation method</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/releases/download/v1.1.0/PMAT-1.1.0.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> PMAT-1.1.0.tar.gz
 <span class="token builtin class-name">cd</span> PMAT/bin
 <span class="token function">chmod</span> a+x PMAT
-PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="install-from-source"><a href="#install-from-source" class="headerlink" title="install from source"></a>install from source</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> PMAT-main.zip
-<span class="token builtin class-name">cd</span> PMAT/bin
-<span class="token function">chmod</span> a+x PMAT
-PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="Repuirement"><a href="#Repuirement" class="headerlink" title="Repuirement"></a>Repuirement</h2><h6 id="When-inputting-HiFi-reads-the-following-software-are-required"><a href="#When-inputting-HiFi-reads-the-following-software-are-required" class="headerlink" title="When inputting HiFi reads, the following software are required:"></a>When inputting HiFi reads, the following software are required:</h6><ul>
+<h2 id="Repuirement"><a href="#Repuirement" class="headerlink" title="Repuirement"></a><a name="C2">Repuirement</a></h2><h6 id="When-inputting-HiFi-reads-the-following-software-are-required"><a href="#When-inputting-HiFi-reads-the-following-software-are-required" class="headerlink" title="When inputting HiFi reads, the following software are required:"></a>When inputting HiFi reads, the following software are required:</h6><ul>
 <li><a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download"><strong>blastn</strong></a>  Needs to be installed in the <code>PATH</code>.</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly"><strong>singularity</strong></a></li>
 </ul>
@@ -234,63 +242,185 @@ PMAT <span class="token parameter variable">--help</span><span aria-hidden="true
 <li><a target="_blank" rel="noopener" href="https://github.com/marbl/canu"><strong>canu</strong></a> or <a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo"><strong>NextDenovo</strong></a>    Suggested to be installed in the <code>PATH</code>.</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly"><strong>singularity</strong></a></li>
 </ul>
-<h2 id="options-and-usage"><a href="#options-and-usage" class="headerlink" title="options and usage"></a>options and usage</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Run <span class="token variable"><span class="token variable">`</span>PMAT <span class="token parameter variable">--help</span><span class="token variable">`</span></span> to view the program<span class="token string">'s usage guide.
+<h2 id="options-and-usage"><a href="#options-and-usage" class="headerlink" title="options and usage"></a><a name="C3">options and usage</a></h2><p>Run <code>PMAT --help</code> to view the program’s usage guide.</p>
+<pre class="line-numbers language-none"><code class="language-none">usage: PMAT &lt;command&gt; &lt;arguments&gt;
 
-    usage: PMAT &lt;command> &lt;arguments>
-    
-     ______     ___           __        ____       _____________ 
-    |   __  \  |   \        /   |      / __ \     |_____   _____|
-    |  |__)  | | |\ \      / /| |     / /  \ \          | |      
-    |   ____/  | | \ \    / / | |    / /____\ \         | |      
-    |  |       | |  \ \  / /  | |   / /______\ \        | |      
-    |  |       | |   \ \/ /   | |  / /        \ \       | |      
-    |__|       |_|    \__/    |_| /_/          \_\      |_|
+ ______     ___           __        ____       _____________ 
+|   __  \  |   \        &#x2F;   |      &#x2F; __ \     |_____   _____|
+|  |__)  | | |\ \      &#x2F; &#x2F;| |     &#x2F; &#x2F;  \ \          | |      
+|   ____&#x2F;  | | \ \    &#x2F; &#x2F; | |    &#x2F; &#x2F;____\ \         | |      
+|  |       | |  \ \  &#x2F; &#x2F;  | |   &#x2F; &#x2F;______\ \        | |      
+|  |       | |   \ \&#x2F; &#x2F;   | |  &#x2F; &#x2F;        \ \       | |      
+|__|       |_|    \__&#x2F;    |_| &#x2F;_&#x2F;          \_\      |_|      
 
+PMAT            an efficient assembly toolkit for plant mitochondrial genome
+Version         1.1.0
+Contributors    Bi,C. and Han,F.
+Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
-    PMAT            an efficient assembly toolkit for plant mitochondrial genome
-    Version         1.1.0
-    Contributors    Bi,C. and Han,F.
-    Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
-    
-    For more information about PMAT, see https://github.com/bichangwei/PMAT
+For more information about PMAT, see https:&#x2F;&#x2F;github.com&#x2F;bichangwei&#x2F;PMAT
 
-    optional arguments:
-        -h, --help     show this help message and exit
-        -v, --version  show program'</span>s version number and <span class="token builtin class-name">exit</span>
+optional arguments:
+-h, --help     show this help message and exit
+-v, --version  show program&#39;s version number and exit
 
-    Commands:
+Commands:
 
-        all         an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
-    
-        graphBuild  Structure assembly based on Newbler output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    autoMito    One-step de novo assembly of mitochondrial genome. 
+                This command corrects the raw ONT&#x2F;CLR data or uses 
+                the corrected data or HiFi for assembly directly. 
+                Based on the assembly result, automatically select 
+                seeds for extension and filter false positives to 
+                obtain an assembly map of the mitochondrial genome.
 
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
-<li><p><strong>all</strong> – De novo analysis of sequencing data (hifi, clr and ont).</p>
-<p>  run <code>PMAT all --help</code> view the usage guide for the all command.</p>
-<p>  Example:</p>
-  <pre class="line-numbers language-none"><code class="language-none"># If canu or NextDenovo is not installed in the PATH when using clr or ont data, you need to provide the parameter -cp or -np.
-For HiFi data    : PMAT all -i hifi.fastq.gz -o hifi_assembly -st hifi -g 500M
-For ONT raw data : PMAT all -i ont.fastq.gz -o ont_assembly -st ont -cfg ont_correct.cfg -tk all -g 500M
-For CLR raw data : PMAT all -i ont.fastq.gz -o clr_assembly -st clr -cfg clr_correct.cfg -tk all -g 500M
-For ONT corrected data : PMAT all -i corrected.fa -o ont_assembly -st ont -tk p1 -g 500M
-For CLR corrected data : PMAT all -i corrected.fa -o clr_assembly -st clr -tk p1 -g 500M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    graphBuild  If PMAT fails to generate the mitochondrial genome 
+                assembly map in one-step assembly, you can use this 
+                command to manually select seeds for assembly.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>  notes:</p>
-<pre><code>1. Make sure blastn is installed in the PATH.
-2. If canu or NextDenovo is not installed in the PATH when using clr or ont data, you need to provide the parameter -cp or -np.
-</code></pre>
-</li>
-<li><p><strong>graphBuild</strong> – Structure assembly based on Newbler results.<br>  run <code>PMAT graphBuild --help</code> view the usage guide for the graphBuild command.</p>
-<p>  Example:</p>
-  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT graphBuild <span class="token parameter variable">-c</span> PMATContigGraph.txt <span class="token parameter variable">-a</span> PMATAllContigs.fna <span class="token parameter variable">-gs</span> 500M <span class="token parameter variable">-rs</span> 4G <span class="token parameter variable">-o</span> output
-PMAT graphBuild <span class="token parameter variable">-c</span> PMATContigGraph.txt <span class="token parameter variable">-a</span> PMATAllContigs.fna <span class="token parameter variable">-gs</span> 500M <span class="token parameter variable">-rs</span> hifi.cut20k.fa <span class="token parameter variable">-s</span> <span class="token number">1</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token parameter variable">-o</span> output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>  notes:</p>
-<pre><code>  When using the graphBuild command, the blastn is required and needs to be installed in the PATH.
-</code></pre>
-</li>
+<h3 id="autoMito"><a href="#autoMito" class="headerlink" title="autoMito"></a><a name="C4">autoMito</a></h3><p>One-step de novo assembly of mitochondrial genome. This command corrects the raw ONT&#x2F;CLR data or uses the corrected data or HiFi for assembly directly. Based on the assembly result, automatically select seeds for extension and filter false positives to obtain an assembly map of the mitochondrial genome.</p>
+<p>run <code>PMAT autoMito --help</code> view the usage guide for the all command.</p>
+<pre class="line-numbers language-none"><code class="language-none">Required arguments:
+  -i INPUT, --input INPUT
+                        input raw sequencing file
+  -o OUTPUT, --output OUTPUT
+                        output directory
+  -st SEQTYPE, --seqtype SEQTYPE
+                        sequencing platform(ONT&#x2F;CLR&#x2F;HiFi)
+  -g GENOMESIZE, --genomesize GENOMESIZE
+                        Please enter the genome size of the species, such as 1G, 1000M.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -tk TASK, --task TASK
+                        all&#x2F;p1&#x2F; Default: all
+                        all : De novo assembly including error correction for ONT&#x2F;CLR data and no error correction for HiFi data
+                        p1  : Import error-corrected ONT&#x2F;CLR or HiFi data for direct assembly
+  -cs CORRECTSOFT, --correctsoft CORRECTSOFT
+                        Correcting software using nextDenovo or Canu. Default: nextDenovo
+  -cp CANU, --canu CANU
+                        Please provide the install path of canu.
+  -np NEXTDENOVO, --nextDenovo NEXTDENOVO
+                        Please provide the install path of nextDenovo.
+  -cfg CORRECTCFG, --correctcfg CORRECTCFG
+                        config file for nextdenovo correct
+  -fc FACTOR, --factor FACTOR
+                        Subset extraction of error-corrected ONT, CLR or HiFi data. Sampling ratio factor in 0-1. Default&#x3D;1
+  -sd SUBSEED, --subseed SUBSEED
+                        Sampling set random number seeds, Default&#x3D;6
+  -bn BREAKNUM, --breaknum BREAKNUM
+                        break long reads (&gt;30k) with this. Default: 20000
+  -ml MINOVERLAPLEN, --minoverlaplen MINOVERLAPLEN
+                        set minimum overlap length. Default:40
+  -mi MINIDENTITY, --minidentity MINIDENTITY
+                        set minimum overlap identification. Default:90
+  -cpu CPU              The number of threads. Default: 8
+  -l MINLINK, --minLink MINLINK
+                        Filter according to the minimum link depth provided by the user
+  -v, --version         show program&#39;s version number and exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>notes</strong>:</p>
+<ol>
+<li>Make sure blastn is installed in the PATH.</li>
+<li>-tk : There are two options for this parameter, all and p1. For ONT or CLR raw data, all is required, and it can be used to correct errors and trim the raw data. For error corrected data, you can set p1 to go directly to the assembly step. For HiFi data, this parameter can be ignored.</li>
+<li>-cs : If use ONT or CLR raw data, users need to provide the -cs parameter to select the error correction software, default use canu.</li>
+<li>-cp : When using canu for error correction, users need to use -cp parameter to specify the installation path of canu. This parameter can be ignored when canu is added to the PATH.</li>
+<li>-np : When using NextDenovo to correct errors, users need to use the -np parameter to specify the installation path of NextDenovo. In addition, you need to use canu to prune the data after NextDenovo error correction, so the -cp parameter is needed to specify the installation path of canu. When NextDenovo and canu are added to the PATH, this parameter can be ignored.</li>
+<li>-cfg : When using NextDenovo error correction, the user needs to specify a config file with -cfg. The cONTents of the configuration file are recommended to check <a target="_blank" rel="noopener" href="https://nextdenovo.readthedocs.io/en/latest/QSTART.html">NextDenovo</a>. Also, it is recommended to add the -b parameter for correction_options in the config file.</li>
+<li>-fc : This parameter can randomly select a subset of sequencing data for error correction and assembly. The default is using all data.</li>
+<li>-sd : The seed used when extracting a subset of sequencing data that can be used with -fc.</li>
+<li>-bn : Assembly requires reads of length less than 30000, recommended to use the default parameters.</li>
+<li>-ml : Parameters used for assembly, default setting is 40. Recommended setting range is 40-200.</li>
+<li>-mi : Parameters used for assembly, default setting is 90. Recommended setting range is 90-95.</li>
+<li>-ml : Parameters used for filtering, recommended default settings.</li>
+</ol>
+<h3 id="graphBuild"><a href="#graphBuild" class="headerlink" title="graphBuild"></a><a name="C5">graphBuild</a></h3><p>If PMAT fails to generate the mitochondrial genome assembly map in one-step assembly, you can use this command to manually select seeds for assembly.</p>
+<p>run <code>PMAT graphBuild --help</code> view the usage guide for the graphBuild command.</p>
+<pre class="line-numbers language-none"><code class="language-none">Required arguments:
+  -c CONTIGGRAPH, --ContigGraph CONTIGGRAPH
+                        PMATContigGraph.txt: a file that can get all connections bewteen contigs.
+  -a ALLCONTIGS, --AllContigs ALLCONTIGS
+                        PMATAllContigs.fna: a file that can get all information of contigs.
+  -o OUTPUT, --output OUTPUT
+                        output directory
+  -gs GENOMESIZE, --genomesize GENOMESIZE
+                        Please enter the genome size of the species, such as 1G, 1000M.
+  -rs READSIZE, --readsize READSIZE
+                        The read size or file for assembly, such as 5G or assembly_seq_subset.0.1.fasta.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -cpu CPU              The number of threads. Default: 8
+  -s SEEDS [SEEDS ...], --seeds SEEDS [SEEDS ...]
+                        ContigID for extending. Multiple contigIDs should be separated by space. For example: 1 312 356
+  -l MINLINK, --minLink MINLINK
+                        Filter according to the minimum link depth provided by the user
+  -v, --version         show program&#39;s version number and exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>notes</strong>:</p>
+<ol>
+<li>Make sure blastn is installed in the PATH.</li>
+<li>-c : PMATContigGraph.txt generated by autoMito command.</li>
+<li>-a : PMATAllContigs.fna generated by autoMito command.</li>
+<li>-gs : The genome size of the species.</li>
+<li>-rs : The amount of data used by the assembly, or provide assembly_seq_subset.0.1.fasta generated by the graphBuild command.</li>
+<li>-s : Manually select the seeds for the extension, it is recommended to use more than 3 seeds. Use spaces to split between different seed ids, e.g. 1,312,356.</li>
+<li>-l : Parameters used for filtering, recommended default settings.</li>
+</ol>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a><a name="C6">Tips</a></h2><p>Tested using data that is already publicly available.</p>
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>Data type</th>
+<th>SRA number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pohlia nutans</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://ngdc.cncb.ac.cn/gsa/browse/CRA006048/CRR383826">CRR383826</a></td>
+</tr>
+<tr>
+<td>Taxus chinensis</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/sra/?term=SRR14756467">SRR14756467</a></td>
+</tr>
+<tr>
+<td>Juncus effusus</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/sra/?term=ERR8282830">ERR8282830</a></td>
+</tr>
+<tr>
+<td>Arabidopsis thaliana</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://ngdc.cncb.ac.cn/gsa/browse/CRA004538/CRR302668">CRR302668</a></td>
+</tr>
+<tr>
+<td>Helianthus annuus</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/sra/?term=SRR14782853">SRR14782853</a></td>
+</tr>
+<tr>
+<td>Salix wilsonii</td>
+<td>HiFi</td>
+<td><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/sra/?term=SRR21570388">SRR21570388</a></td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Examples of de novo assembly of mitochondrial genomes using Arabidopsis thaliana's publicly available HiFi data.</span>
+PMAT autoMito <span class="token parameter variable">-i</span> CRR302668.fastq <span class="token parameter variable">-o</span> ./test <span class="token parameter variable">-st</span> hifi <span class="token parameter variable">-g</span> 125m <span class="token parameter variable">-fc</span> <span class="token number">0.1</span>
+
+<span class="token comment"># Manual selection of seeds to generate assembly graphs.</span>
+PMAT graphBuild <span class="token parameter variable">-c</span> assembly_result/PMATContigGraph.txt-a ./test/assembly_result/PMATAllContigs.fna <span class="token parameter variable">-gs</span> 125m <span class="token parameter variable">-rs</span> ./test/subsample/assembly_seq_subset.0.1.fasta <span class="token parameter variable">-o</span> ./test_gfa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Output-files"><a href="#Output-files" class="headerlink" title="Output files"></a><a name="C7">Output files</a></h2><p>PMAT will produce a series of folders with the results:</p>
+<ul>
+<li>.&#x2F;test&#x2F;subsample&#x2F;assembly_seq_subset.0.1.fasta -&gt; Data for assembly</li>
+<li>.&#x2F;test&#x2F;subsample&#x2F;assembly_seq.cut20K.fasta -&gt; reads trimmed data</li>
+<li>.&#x2F;test&#x2F;assembly_result&#x2F;PMATAllContigs.fna -&gt; The assembly result contains contig sequences</li>
+<li>.&#x2F;test&#x2F;assembly_result&#x2F;PMATContigGraph.txt -&gt; The assembly result contains contig linking relationships</li>
+<li>.&#x2F;test&#x2F;assembly_result&#x2F;PMAT_raw.gfa -&gt; Initial results of mitochondrial genome assembly for visualization</li>
+<li>.&#x2F;test&#x2F;assembly_result&#x2F;PMAT_master.gfa -&gt; Mitochondrial genome assembly optimization results for visualization</li>
 </ul>
-<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>PMAT version 1.10 (2023.05.05)</p>
-<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi <a href="mailto:&#x62;&#x69;&#x63;&#104;&#119;&#x65;&#x69;&#x40;&#110;&#106;&#x66;&#117;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#x6e;">&#x62;&#x69;&#x63;&#104;&#119;&#x65;&#x69;&#x40;&#110;&#106;&#x66;&#117;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#x6e;</a><br>Fuchuan Han <a href="mailto:&#x68;&#x61;&#110;&#x66;&#x63;&#x40;&#x63;&#97;&#102;&#x2e;&#x61;&#99;&#46;&#x63;&#x6e;">&#x68;&#x61;&#110;&#x66;&#x63;&#x40;&#x63;&#97;&#102;&#x2e;&#x61;&#99;&#46;&#x63;&#x6e;</a></p>
+<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a><a name="C8">Version</a></h2><p>PMAT version 1.1.0 (2023.05.05)</p>
+<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi <a href="mailto:&#x62;&#105;&#x63;&#104;&#119;&#x65;&#x69;&#64;&#x6e;&#106;&#102;&#117;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;">&#x62;&#105;&#x63;&#104;&#119;&#x65;&#x69;&#64;&#x6e;&#106;&#102;&#117;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;</a><br>Fuchuan Han <a href="mailto:&#x68;&#x61;&#110;&#x66;&#x63;&#x40;&#99;&#97;&#x66;&#x2e;&#97;&#99;&#46;&#99;&#110;">&#x68;&#x61;&#110;&#x66;&#x63;&#x40;&#99;&#97;&#x66;&#x2e;&#97;&#99;&#46;&#99;&#110;</a></p>
 
     </div>
 
@@ -394,7 +524,7 @@ PMAT graphBuild <span class="token parameter variable">-c</span> PMATContigGraph
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PMAT-an-efficient-assembly-toolkit-for-plant-mitochondrial-genome"><span class="nav-number">1.</span> <span class="nav-text">PMAT - an efficient assembly toolkit for plant mitochondrial genome</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.1.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#install-by-using-git"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">install by using git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#install-from-source"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">install from source</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repuirement"><span class="nav-number">1.2.</span> <span class="nav-text">Repuirement</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#When-inputting-HiFi-reads-the-following-software-are-required"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">When inputting HiFi reads, the following software are required:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#When-inputting-CLR-or-ONT-reads-the-following-software-are-required"><span class="nav-number">1.2.0.0.0.2.</span> <span class="nav-text">When inputting CLR or ONT reads, the following software are required:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-and-usage"><span class="nav-number">1.3.</span> <span class="nav-text">options and usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version"><span class="nav-number">1.5.</span> <span class="nav-text">Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Author"><span class="nav-number">1.6.</span> <span class="nav-text">Author</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PMAT"><span class="nav-number">1.</span> <span class="nav-text">PMAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number">1.1.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#recommended-installation-method"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">recommended installation method</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repuirement"><span class="nav-number">1.2.</span> <span class="nav-text">Repuirement</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#When-inputting-HiFi-reads-the-following-software-are-required"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">When inputting HiFi reads, the following software are required:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#When-inputting-CLR-or-ONT-reads-the-following-software-are-required"><span class="nav-number">1.2.0.0.0.2.</span> <span class="nav-text">When inputting CLR or ONT reads, the following software are required:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#options-and-usage"><span class="nav-number">1.3.</span> <span class="nav-text">options and usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#autoMito"><span class="nav-number">1.3.1.</span> <span class="nav-text">autoMito</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#graphBuild"><span class="nav-number">1.3.2.</span> <span class="nav-text">graphBuild</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-files"><span class="nav-number">1.5.</span> <span class="nav-text">Output files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version"><span class="nav-number">1.6.</span> <span class="nav-text">Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Author"><span class="nav-number">1.7.</span> <span class="nav-text">Author</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
