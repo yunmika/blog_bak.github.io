@@ -28,7 +28,7 @@
 <meta property="og:description" content="详细介绍一下我们的软件-PMAT">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-09T06:53:16.000Z">
-<meta property="article:modified_time" content="2023-06-11T03:09:26.868Z">
+<meta property="article:modified_time" content="2023-11-12T03:11:20.995Z">
 <meta property="article:author" content="Fuchuan Han">
 <meta name="twitter:card" content="summary">
 
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-11 11:09:26" itemprop="dateModified" datetime="2023-06-11T11:09:26+08:00">2023-06-11</time>
+                <time title="修改时间：2023-11-12 11:11:20" itemprop="dateModified" datetime="2023-11-12T11:11:20+08:00">2023-11-12</time>
               </span>
 
           
@@ -212,22 +212,25 @@
 
       
         <p>目前已经开发出很多软件应用在植物线粒体基因组的组装，大部分都是针对二代测序数据和三代测序数据ONT及CLR进行组装。受限于二代数据的长度及ONT和CLR测序数据的准确性，对复杂的植物线粒体基因组组装效果并不理想。PMAT可以对WGS的三代测序数据ONT、CLR及HiFi进行组装，并且自动选择线粒体基因组中的序列。该软件目前只能在linux系统运行，github地址 <a target="_blank" rel="noopener" href="https://github.com/bichangwei/PMAT">https://github.com/bichangwei/PMAT</a> 。</p>
-<h3 id="PMAT-安装"><a href="#PMAT-安装" class="headerlink" title="PMAT 安装"></a>PMAT 安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 建议直接下载稳定版本，通过git clone下载在的文件不完整会报错</span>
-<span class="token function">wget</span> https://github.com/bichangwei/PMAT/releases/download/v1.1.0/PMAT-1.1.0.tar.gz
-<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> PMAT-1.1.0.tar.gz
+<h3 id="PMAT-安装"><a href="#PMAT-安装" class="headerlink" title="PMAT 安装"></a>PMAT 安装</h3><p>通过git安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/bichangwei/PMAT.git
 <span class="token builtin class-name">cd</span> PMAT/bin
 <span class="token function">chmod</span> a+x PMAT
-PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>源代码安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/archive/refs/tags/v1.4.0.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> v1.4.0.tar.gz
+<span class="token builtin class-name">cd</span> PMAT-1.4.0/bin
+<span class="token function">chmod</span> a+x PMAT
+PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="singularity-安装"><a href="#singularity-安装" class="headerlink" title="singularity 安装"></a>singularity 安装</h3><p>需要提前安装singularity，具体安装方法可以参考(<a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly">https://github.com/YanshuQu/runAssembly</a>)</p>
+<h3 id="Apptainer-安装"><a href="#Apptainer-安装" class="headerlink" title="Apptainer 安装"></a>Apptainer 安装</h3><p>需要提前安装Apptainer，具体安装方法可以参考<a target="_blank" rel="noopener" href="https://github.com/apptainer/apptainer/blob/main/INSTALL.md">链接</a></p>
 <h3 id="依赖软件"><a href="#依赖软件" class="headerlink" title="依赖软件"></a>依赖软件</h3><h6 id="当使用HiFi数据进行组装时，有以下依赖"><a href="#当使用HiFi数据进行组装时，有以下依赖" class="headerlink" title="当使用HiFi数据进行组装时，有以下依赖:"></a>当使用HiFi数据进行组装时，有以下依赖:</h6><ul>
 <li><a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download"><strong>blastn</strong></a>  需要添加到环境变量中.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly"><strong>singularity</strong></a></li>
 </ul>
 <h6 id="对于ONT和crl测序数据，有以下依赖"><a href="#对于ONT和crl测序数据，有以下依赖" class="headerlink" title="对于ONT和crl测序数据，有以下依赖:"></a>对于ONT和crl测序数据，有以下依赖:</h6><ul>
 <li><a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download"><strong>blastn</strong></a>     需要添加到环境变量中.</li>
 <li>如果数据纠错软件指定使用<a target="_blank" rel="noopener" href="https://github.com/marbl/canu"><strong>canu</strong></a>，则需要安装<a target="_blank" rel="noopener" href="https://github.com/marbl/canu"><strong>canu</strong></a>，否则<a target="_blank" rel="noopener" href="https://github.com/marbl/canu"><strong>canu</strong></a>和<a target="_blank" rel="noopener" href="https://github.com/Nextomics/NextDenovo"><strong>NextDenovo</strong></a>都需要安装(建议添加到环境变量)。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/YanshuQu/runAssembly"><strong>singularity</strong></a></li>
 </ul>
 <h3 id="PMAT-使用"><a href="#PMAT-使用" class="headerlink" title="PMAT 使用"></a>PMAT 使用</h3><p>Run <code>PMAT --help</code> to view the program’s usage guide.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">usage: PMAT <span class="token operator">&lt;</span>command<span class="token operator">></span> <span class="token operator">&lt;</span>arguments<span class="token operator">></span>
@@ -238,29 +241,35 @@ PMAT <span class="token parameter variable">--help</span><span aria-hidden="true
 <span class="token operator">|</span>   ____/  <span class="token operator">|</span> <span class="token operator">|</span> <span class="token punctuation">\</span> <span class="token punctuation">\</span>    / / <span class="token operator">|</span> <span class="token operator">|</span>    / /____<span class="token punctuation">\</span> <span class="token punctuation">\</span>         <span class="token operator">|</span> <span class="token operator">|</span>      
 <span class="token operator">|</span>  <span class="token operator">|</span>       <span class="token operator">|</span> <span class="token operator">|</span>  <span class="token punctuation">\</span> <span class="token punctuation">\</span>  / /  <span class="token operator">|</span> <span class="token operator">|</span>   / /______<span class="token punctuation">\</span> <span class="token punctuation">\</span>        <span class="token operator">|</span> <span class="token operator">|</span>      
 <span class="token operator">|</span>  <span class="token operator">|</span>       <span class="token operator">|</span> <span class="token operator">|</span>   <span class="token punctuation">\</span> <span class="token punctuation">\</span>/ /   <span class="token operator">|</span> <span class="token operator">|</span>  / /        <span class="token punctuation">\</span> <span class="token punctuation">\</span>       <span class="token operator">|</span> <span class="token operator">|</span>      
-<span class="token operator">|</span>__<span class="token operator">|</span>       <span class="token operator">|</span>_<span class="token operator">|</span>    <span class="token punctuation">\</span>__/    <span class="token operator">|</span>_<span class="token operator">|</span> /_/          <span class="token punctuation">\</span>_<span class="token punctuation">\</span>      <span class="token operator">|</span>_<span class="token operator">|</span>
-
+<span class="token operator">|</span>__<span class="token operator">|</span>       <span class="token operator">|</span>_<span class="token operator">|</span>    <span class="token punctuation">\</span>__/    <span class="token operator">|</span>_<span class="token operator">|</span> /_/          <span class="token punctuation">\</span>_<span class="token punctuation">\</span>      <span class="token operator">|</span>_<span class="token operator">|</span>      
 
 PMAT            an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
-Version         <span class="token number">1.1</span>.0
+Version         <span class="token number">1.4</span>.0
 Contributors    Bi,C. and Han,F.
 Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
 For <span class="token function">more</span> information about PMAT, see https://github.com/bichangwei/PMAT
 
 optional arguments:
-    -h, <span class="token parameter variable">--help</span>     show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
-    -v, <span class="token parameter variable">--version</span>  show program's version number and <span class="token builtin class-name">exit</span>
+-h, <span class="token parameter variable">--help</span>     show this <span class="token builtin class-name">help</span> message and <span class="token builtin class-name">exit</span>
+-v, <span class="token parameter variable">--version</span>  show program's version number and <span class="token builtin class-name">exit</span>
 
 Commands:
 
-    all         an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
+    autoMito    One-step de novo assembly of the mitochondrial genome. 
+                This <span class="token builtin class-name">command</span> corrects the raw ONT/CLR data or uses 
+                the corrected data or HiFi <span class="token keyword">for</span> assembly directly. 
+                Based on the assembly result, automatically <span class="token keyword">select</span> 
+                seeds <span class="token keyword">for</span> extension and filter <span class="token boolean">false</span> positives to 
+                obtain an assembly map of the mitochondrial genome.
 
-    graphBuild  Structure assembly based on Newbler output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    graphBuild  If PMAT fails to generate the mitochondrial genome 
+                assembly map <span class="token keyword">in</span> one-step assembly, you can use this 
+                <span class="token builtin class-name">command</span> by manually <span class="token keyword">select</span> seeds <span class="token keyword">for</span> assembly.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li><p><strong>all</strong> 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析</p>
-<p>  <code>PMAT all -h</code> 查看程序all的帮助文档</p>
+<li><p><strong>autoMito</strong> 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析</p>
+<p>  <code>PMAT autoMito -h</code> 查看程序all的帮助文档</p>
 </li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 必选参数</span>
@@ -271,12 +280,13 @@ Commands:
 
 <span class="token comment"># 可选参数</span>
 <span class="token parameter variable">-tk</span> <span class="token parameter variable">--task</span>        <span class="token comment">#可选任务all/p1，默认为all。如果输入数据为高错误率的原始测序数据需要使用all，如果输入数据为纠错后的数据可以选择p1</span>
+<span class="token parameter variable">-tp</span> <span class="token parameter variable">--type</span>        <span class="token comment">#可选择all/mt/pt，默认为mt。选择进行组装细胞器基因组的类型</span>
 <span class="token parameter variable">-cp</span> <span class="token parameter variable">--canu</span>        <span class="token comment">#canu软件安装路径，如果已经添加到环境变量中则不需要提供该参数，用于前期的测序数据纠错和修剪过程</span>
 <span class="token parameter variable">-np</span> <span class="token parameter variable">--nextDenovo</span>  <span class="token comment">#nextDenovo软件的安装路径，如果已经添加到环境变量中则不需要提供该参数，用于数据的纠错</span>
 <span class="token parameter variable">-cs</span> <span class="token parameter variable">--correctsoft</span> <span class="token comment">#测序数据纠错使用的软件，默认使用nextDenovo，可以选择canu或者NextDenovo</span>
 <span class="token parameter variable">-cfg</span> <span class="token parameter variable">--correctcfg</span> <span class="token comment">#当使用NextDenovo为纠错软件时，需要提供该参数</span>
 <span class="token parameter variable">-fc</span> <span class="token parameter variable">--factor</span>      <span class="token comment">#选择一定比例的子集序列作为组装线粒体基因组的数据集，默认使用全部的测序数据进行组装</span>
-<span class="token parameter variable">-cpu</span>              <span class="token comment">#选择使用线程数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token parameter variable">-cpu</span>              <span class="token comment">#选择使用线程数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li><strong>graphBuild</strong> 对组装结果自动检查线粒体基因组序列，并生成gfa文件</li>
@@ -292,24 +302,27 @@ Commands:
 <span class="token parameter variable">-cpu</span> <span class="token comment">#线程数</span>
 <span class="token parameter variable">-s</span> <span class="token parameter variable">--seeds</span> <span class="token comment">#选择指定的seeds作为候选种子进行延伸,不提供该参数则进行自动选择</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h6 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h6><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># HiFi 测序数据</span>
-PMAT all <span class="token parameter variable">-i</span> HiFi_data.fa <span class="token parameter variable">-fc</span> <span class="token number">0.1</span> <span class="token parameter variable">-o</span> HiFi_assembly <span class="token parameter variable">-st</span> HiFi <span class="token parameter variable">-g</span> 200M <span class="token parameter variable">-cpu</span> <span class="token number">32</span>
-<span class="token comment"># ONT 原始测序数据</span>
-PMAT all <span class="token parameter variable">-i</span> ONT_data.fa <span class="token parameter variable">-fc</span> <span class="token number">0.1</span> <span class="token parameter variable">-o</span> ONT_assembly <span class="token parameter variable">-cs</span> canu <span class="token parameter variable">-cp</span> /path/canu <span class="token parameter variable">-st</span> ONT <span class="token parameter variable">-g</span> 200M <span class="token parameter variable">-cpu</span> <span class="token number">32</span>
-<span class="token comment"># CLR 原始测序数据</span>
-PMAT all <span class="token parameter variable">-i</span> CLR_data.fa <span class="token parameter variable">-fc</span> <span class="token number">0.1</span> <span class="token parameter variable">-o</span> CLR_assembly <span class="token parameter variable">-cp</span> /path/canu <span class="token parameter variable">-np</span> /path/nextDenovo <span class="token parameter variable">-cfg</span> nextDenovo.cfg <span class="token parameter variable">-st</span> CLR <span class="token parameter variable">-g</span> 200M <span class="token parameter variable">-cpu</span> <span class="token number">32</span>
-<span class="token comment"># CLR 纠错后数据</span>
-PMAT all <span class="token parameter variable">-i</span> CLR_corrected_data.fa <span class="token parameter variable">-tk</span> p1 <span class="token parameter variable">-o</span> CLR_assembly <span class="token parameter variable">-st</span> CLR <span class="token parameter variable">-g</span> 200M <span class="token parameter variable">-cpu</span> <span class="token number">32</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>一共会输出以下文件：</p>
-<ul>
-<li>subsample&#x2F;assembly_seq_subset.0.1.fasta <em>用于组装的数据</em></li>
-<li>subsample&#x2F;assembly_seq.cut20K.fasta     <em>截断为长度为20kb的reads</em></li>
-<li>assembly_result&#x2F;PMATAllContigs.fna      <em>组装结果contig序列文件</em></li>
-<li>assembly_result&#x2F;PMATContigGraph.txt     <em>组装结果contig连接关系</em></li>
-<li>assembly_result&#x2F;PMAT_raw.gfa            <em>用于可视化的线粒体基因组组装初始结果</em></li>
-<li>assembly_result&#x2F;PMAT_master.gfa         <em>用于可视化的线粒体基因组组装优化结果</em></li>
-</ul>
-<p style="color: red"><b>软件已经公布在github(https://github.com/bichangwei/PMAT)，期待大家宝贵的建议！</b></p>
+<h6 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h6><ol>
+<li>下载拟南芥HiFi数据:<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/releases/download/v1.1.0/Arabidopsis_thaliana_550Mb.fa.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>运行autoMito进行一步组装:<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> Arabidopsis_thaliana_550Mb.fa.gz <span class="token parameter variable">-o</span> ./test1 <span class="token parameter variable">-st</span> hifi <span class="token parameter variable">-g</span> 120m <span class="token parameter variable">-m</span> <span class="token parameter variable">-tp</span> all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>使用graphBuild手动设置候选contig进行组装:<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Based on the PMATContigGraph.txt file, manually select 3 or more contigs that match the depth of mitochondrial genome sequencing</span>
+PMAT graphBuild <span class="token parameter variable">-c</span> ./test1/assembly_result/PMATContigGraph.txt <span class="token parameter variable">-a</span> ./test1/assembly_result/PMATAllContigs.fna <span class="token parameter variable">-gs</span> 125m <span class="token parameter variable">-rs</span> ./test1/subsample/assembly_seq.cut20K.fasta <span class="token parameter variable">-o</span> ./test1_gfa <span class="token parameter variable">-s</span> <span class="token number">343</span> <span class="token number">345</span> <span class="token number">905</span> <span class="token number">513</span> <span class="token number">1344</span> <span class="token parameter variable">-tp</span> mt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>运行时间</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">8 CPUs: 13m25.342s; 16 CPUs: 9m29.853s; 32 CPUs: 8m42.429s; 64 CPUs: 7m57.279s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code>一共会输出以下文件：
+- subsample/assembly_seq_subset.0.1.fasta *用于组装的数据*
+- subsample/assembly_seq.cut20K.fasta     *截断为长度为20kb的reads*
+- assembly_result/PMATAllContigs.fna      *组装结果contig序列文件*
+- assembly_result/PMATContigGraph.txt     *组装结果contig连接关系*
+- assembly_result/PMAT_mt_raw.gfa         *用于可视化的线粒体基因组组装初始结果*
+- assembly_result/PMAT_mt_master.gfa      *用于可视化的线粒体基因组组装优化结果*
+- assembly_result/PMAT_pt_raw.gfa         *用于可视化的叶绿体基因组组装初始结果*
+- assembly_result/PMAT_pt_master.gfa      *用于可视化的叶绿体基因组组装优化结果*
+
+&lt;p style=&quot;color: red&quot;&gt;&lt;b&gt;软件已经公布在github(https://github.com/bichangwei/PMAT)，期待大家宝贵的建议！&lt;/b&gt;&lt;/p&gt;
+</code></pre>
+
     </div>
 
     
@@ -409,7 +422,7 @@ PMAT all <span class="token parameter variable">-i</span> CLR_corrected_data.fa 
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">PMAT 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#singularity-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">singularity 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">依赖软件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BD%93%E4%BD%BF%E7%94%A8HiFi%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E7%BB%84%E8%A3%85%E6%97%B6%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">当使用HiFi数据进行组装时，有以下依赖:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8EONT%E5%92%8Ccrl%E6%B5%8B%E5%BA%8F%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">对于ONT和crl测序数据，有以下依赖:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">PMAT 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">应用实例</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">PMAT 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apptainer-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Apptainer 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">依赖软件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BD%93%E4%BD%BF%E7%94%A8HiFi%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E7%BB%84%E8%A3%85%E6%97%B6%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">当使用HiFi数据进行组装时，有以下依赖:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8EONT%E5%92%8Ccrl%E6%B5%8B%E5%BA%8F%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">对于ONT和crl测序数据，有以下依赖:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">PMAT 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">应用实例</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
