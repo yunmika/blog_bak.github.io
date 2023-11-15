@@ -27,12 +27,10 @@
 <meta property="og:site_name" content="云伴风行">
 <meta property="og:description" content="PMAT is an efficient assembly toolkit for assembling plant mitogenomes using third-generation (HiFi&#x2F;CLR&#x2F;ONT) sequencing data. PMAT can also be used to assemble chloroplast genomes or animal mitogenome">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://hanfc.top/2023/05/28/PMAT/PMAT.png">
 <meta property="article:published_time" content="2023-05-28T12:21:02.000Z">
-<meta property="article:modified_time" content="2023-11-12T02:56:41.861Z">
+<meta property="article:modified_time" content="2023-11-15T06:22:15.893Z">
 <meta property="article:author" content="Fuchuan Han">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://hanfc.top/2023/05/28/PMAT/PMAT.png">
 
 <link rel="canonical" href="http://hanfc.top/2023/05/28/PMAT/">
 
@@ -198,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-12 10:56:41" itemprop="dateModified" datetime="2023-11-12T10:56:41+08:00">2023-11-12</time>
+                <time title="修改时间：2023-11-15 14:22:15" itemprop="dateModified" datetime="2023-11-15T14:22:15+08:00">2023-11-15</time>
               </span>
 
           
@@ -213,9 +211,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="PMAT"><a href="#PMAT" class="headerlink" title="PMAT"></a><a name="h1">PMAT</a></h1><p>an efficient assembly toolkit for plant mitochondrial genome</p>
-<p><img src="/2023/05/28/PMAT/PMAT.png" alt="img"></p>
-<p>PMAT is an efficient assembly toolkit for assembling plant mitogenomes using third-generation (HiFi&#x2F;CLR&#x2F;ONT) sequencing data. PMAT can also be used to assemble chloroplast genomes or animal mitogenomes. </p>
+        <h1 id="PMAT"><a href="#PMAT" class="headerlink" title="PMAT"></a><a name="h1">PMAT</a></h1><p>PMAT is an efficient assembly toolkit for assembling plant mitogenomes using third-generation (HiFi&#x2F;CLR&#x2F;ONT) sequencing data. PMAT can also be used to assemble chloroplast genomes or animal mitogenomes. </p>
 <ul>
 <li><a href="#h1">PMAT</a></li>
 <li><a href="#C1">Installation</a></li>
@@ -242,9 +238,9 @@
 <span class="token function">chmod</span> a+x PMAT
 PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Install by downloading the source codes</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/archive/refs/tags/v1.4.0.tar.gz
-<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> v1.4.0.tar.gz
-<span class="token builtin class-name">cd</span> PMAT-1.4.0/bin
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/archive/refs/tags/v1.5.1.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> v1.5.1.tar.gz
+<span class="token builtin class-name">cd</span> PMAT-1.5.1/bin
 <span class="token function">chmod</span> a+x PMAT
 PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -266,7 +262,7 @@ PMAT <span class="token parameter variable">--help</span><span aria-hidden="true
 |__|       |_|    \__&#x2F;    |_| &#x2F;_&#x2F;          \_\      |_|      
 
 PMAT            An efficient assembly toolkit for plant mitochondrial genome
-Version         1.4.0
+Version         1.5.1
 Contributors    Bi,C. and Han,F.
 Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
@@ -335,14 +331,14 @@ optional arguments:
 <p><strong>Notes</strong>:</p>
 <ol>
 <li>Make sure BLASTn was installed in PATH.</li>
-<li><code>-tk</code> : There are two options for this parameter: ‘all’ or ‘p1’. For ONT or CLR raw data, ‘all’ is required to correct reads errors and trim the raw data. For error corrected data of ONT&#x2F;CLR, you can set ‘p1’ to skip the correct step. For HiFi data, this parameter can be ignored.</li>
-<li><code>-cs</code> : For ONT or CLR raw data, users should provide the -cs parameter to select the error correction software, default: Nextdenovo.</li>
-<li><code>-cp</code> : When using Canu for error correction, users need to use -cp parameter to specify the installation path of Canu. This parameter can be ignored when Canu is added to PATH.</li>
-<li><code>-np</code> : When using NextDenovo to correct errors, users need to use the -np parameter to specify the installation path of NextDenovo. In addition, you need to use canu to trim the data after NextDenovo error correction, so the -cp parameter is needed to specify the installation path of Canu. When NextDenovo and Canu are added to PATH, this parameter can be ignored.</li>
-<li><code>-cfg</code> : When using NextDenovo error correction, the user needs to specify a config file with -cfg. The contents of the configuration file are recommended to check <a target="_blank" rel="noopener" href="https://nextdenovo.readthedocs.io/en/latest/QSTART.html">NextDenovo</a>. Also, it is recommended to add the parameter -b for correction_options in config file.</li>
-<li><code>-fc</code> : This parameter can be used to randomly select a subset of sequencing data for error correction and assembly. Default: all data.</li>
-<li><code>-ml</code> : Parameters used for assembly, default setting is 40. Recommended setting: 40~200.</li>
-<li><code>-mi</code> : Parameters used for assembly, default setting is 90. Recommended setting: 90~98.</li>
+<li><code>-tk</code>: There are two options for this parameter: ‘all’ or ‘p1’. For ONT or CLR raw data, ‘all’ is required to correct reads errors and trim the raw data. For error corrected data of ONT&#x2F;CLR, you can set ‘p1’ to skip the correct step. For HiFi data, this parameter can be ignored.</li>
+<li><code>-cs</code>: For ONT or CLR raw data, users should provide the -cs parameter to select the error correction software, default: Nextdenovo.</li>
+<li><code>-cp</code>: When using Canu for error correction, users need to use -cp parameter to specify the installation path of Canu. This parameter can be ignored when Canu is added to PATH.</li>
+<li><code>-np</code>: When using NextDenovo to correct errors, users need to use the -np parameter to specify the installation path of NextDenovo. In addition, you need to use canu to trim the data after NextDenovo error correction, so the -cp parameter is needed to specify the installation path of Canu. When NextDenovo and Canu are added to PATH, this parameter can be ignored.</li>
+<li><code>-cfg</code>: When using NextDenovo error correction, the user needs to specify a config file with -cfg. The contents of the configuration file are recommended to check <a target="_blank" rel="noopener" href="https://nextdenovo.readthedocs.io/en/latest/QSTART.html">NextDenovo</a>. Also, it is recommended to add the parameter -b for correction_options in config file.</li>
+<li><code>-fc</code>: This parameter can be used to randomly select a subset of sequencing data for error correction and assembly. Default: all data.</li>
+<li><code>-ml</code>: Parameters used for assembly, the default setting is 40. Recommended setting: 40~200.</li>
+<li><code>-mi</code>: Parameters used for assembly, the default setting is 90. Recommended setting: 90~98.</li>
 </ol>
 <h3 id="graphBuild"><a href="#graphBuild" class="headerlink" title="graphBuild"></a><a name="C5">graphBuild</a></h3><p>If PMAT fails to generate the assembly graph in ‘autoMito’ mode, you can use this command to manually select seeds for assembly.</p>
 <p>Run <code>PMAT graphBuild --help</code> to view the usage guide.</p>
@@ -374,11 +370,11 @@ optional arguments:
 <p><strong>Notes</strong>:</p>
 <ol>
 <li>Make sure BLASTn was installed in PATH.</li>
-<li><code>-c</code> : PMATContigGraph.txt generated by autoMito command.</li>
-<li><code>-a</code> : PMATAllContigs.fna generated by autoMito command.</li>
-<li><code>-gs</code> : The genome size of the species.</li>
-<li><code>-rs</code> : The amount of data used by the assembly, or provide assembly_seq.cut20K.fasta generated by the graphBuild command.</li>
-<li><code>-s</code> : Manually select the seeds for the extension, it is recommended to use more than 3 seeds. Use spaces to split between different seed IDs, e.g. 1,312,356.</li>
+<li><code>-c</code>: PMATContigGraph.txt generated by autoMito command.</li>
+<li><code>-a</code>: PMATAllContigs.fna generated by autoMito command.</li>
+<li><code>-gs</code>: The genome size of the species.</li>
+<li><code>-rs</code>: The amount of data used by the assembly, or provide assembly_seq.cut20K.fasta generated by the graphBuild command.</li>
+<li><code>-s</code>: Manually select the seeds for the extension, it is recommended to use more than 3 seeds. Use spaces to split between different seed IDs, e.g. 1,312,356.</li>
 </ol>
 <h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a><a name="C6">Examples</a></h2><p><strong><a name="C6.1">Demo1</a></strong></p>
 <ol>
@@ -390,20 +386,25 @@ PMAT graphBuild <span class="token parameter variable">-c</span> ./test1/assembl
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">8 CPUs: 13m25.342s; 16 CPUs: 9m29.853s; 32 CPUs: 8m42.429s; 64 CPUs: 7m57.279s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong><a name="C6.2">Demo2</a></strong></p>
+<p><strong><a name="C6.3">Demo2</a></strong></p>
 <ol>
-<li>CLR data link for Manihot esculenta:<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;sra&#x2F;?term&#x3D;SRR14351878<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>then run the autoMito command for one-click assembly (CLR):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> SRR14351878.fastq <span class="token parameter variable">-o</span> ./test_clr <span class="token parameter variable">-st</span> clr <span class="token parameter variable">-g</span> 640m <span class="token parameter variable">-cs</span> nextDenovo <span class="token parameter variable">-np</span> path/nextDenovo <span class="token parameter variable">-cp</span> path/canu <span class="token parameter variable">-cfg</span> nextdenovo.cfg <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>Download a simulated Malus domestica HiFi dataset:<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/releases/download/v1.1.0/Malus_domestica.540Mb.fasta.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>then run the autoMito command for one-click assembly:<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> Malus_domestica.540Mb.fasta.gz <span class="token parameter variable">-o</span> ./test3 <span class="token parameter variable">-st</span> hifi <span class="token parameter variable">-g</span> 703m <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>then use the graphBuild command to manually select seeds for assembly (used when the autoMito command fails to get gfa automatically):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Based on the PMATContigGraph.txt file, manually select 3 or more contigs that match the depth of mitochondrial genome sequencing</span>
+PMAT graphBuild <span class="token parameter variable">-c</span> ./test3/assembly_result/PMATContigGraph.txt <span class="token parameter variable">-a</span> ./test3/assembly_result/PMATAllContigs.fna <span class="token parameter variable">-gs</span> 225m <span class="token parameter variable">-rs</span> ./test3/subsample/assembly_seq.cut20K.fasta <span class="token parameter variable">-o</span> ./test3_gfa <span class="token parameter variable">-s</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">15391</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>PMAT runtime for different number of threads</li>
 </ol>
+<pre class="line-numbers language-none"><code class="language-none">8 CPUs: 21m12.306s; 16 CPUs: 12m14.663s; 32 CPUs: 7m58.749s; 64 CPUs: 6m48.915s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><strong><a name="C6.3">Demo3</a></strong></p>
 <ol>
-<li>CLR data link for Phaseolus vulgaris:<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;sra&#x2F;?term&#x3D;SRR2912756<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>then run the autoMito command for one-click assembly (CLR):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> SRR2912756.fastq <span class="token parameter variable">-o</span> ./test_clr <span class="token parameter variable">-st</span> clr <span class="token parameter variable">-g</span> 540m <span class="token parameter variable">-cs</span> canu <span class="token parameter variable">-cp</span> path/canu <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>Download tested CLR data for Phaseolus vulgaris using IBM Aspera:<pre class="line-numbers language-none"><code class="language-none">ascp -v -QT -l 400m -P33001 -k1 -i ~&#x2F;.aspera&#x2F;connect&#x2F;etc&#x2F;asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:&#x2F;vol1&#x2F;fastq&#x2F;SRR291&#x2F;006&#x2F;SRR2912756&#x2F;SRR2912756_subreads.fastq.gz .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>then run the autoMito command for one-click assembly (CLR):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> SRR2912756_subreads.fastq.gz <span class="token parameter variable">-o</span> ./test_clr <span class="token parameter variable">-st</span> clr <span class="token parameter variable">-g</span> 540m <span class="token parameter variable">-cs</span> nextDenovo <span class="token parameter variable">-np</span> path/nextDenovo <span class="token parameter variable">-cp</span> path/canu <span class="token parameter variable">-cfg</span> nextdenovo.cfg <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><strong><a name="C6.4">Demo4</a></strong></p>
 <ol>
-<li>ONT data link for Populus deltoides:<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;sra&#x2F;?term&#x3D;SRR12202038<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>then run the autoMito command for one-click assembly (CLR):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> SRR12202038.fastq <span class="token parameter variable">-o</span> ./test_clr <span class="token parameter variable">-st</span> clr <span class="token parameter variable">-g</span> 430m <span class="token parameter variable">-cs</span> nextDenovo <span class="token parameter variable">-np</span> path/nextDenovo <span class="token parameter variable">-cp</span> path/canu <span class="token parameter variable">-cfg</span> nextdenovo.cfg <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>Download tested ONT data for Populus deltoides using IBM Aspera:<pre class="line-numbers language-none"><code class="language-none">ascp -v -QT -l 400m -P33001 -k1 -i ~&#x2F;.aspera&#x2F;connect&#x2F;etc&#x2F;asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:&#x2F;vol1&#x2F;fastq&#x2F;SRR122&#x2F;038&#x2F;SRR12202038&#x2F;SRR12202038_1.fastq.gz  .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>then run the autoMito command for one-click assembly (ONT):<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PMAT autoMito <span class="token parameter variable">-i</span> SRR12202038_1.fastq.gz <span class="token parameter variable">-o</span> ./test_ont <span class="token parameter variable">-st</span> ont <span class="token parameter variable">-g</span> 430m <span class="token parameter variable">-cs</span> nextDenovo <span class="token parameter variable">-np</span> path/nextDenovo <span class="token parameter variable">-cp</span> path/canu <span class="token parameter variable">-cfg</span> nextdenovo.cfg <span class="token parameter variable">-m</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <h2 id="Resulting-files"><a href="#Resulting-files" class="headerlink" title="Resulting files"></a><a name="C7">Resulting files</a></h2><ul>
 <li>The output files include:<ul>
@@ -413,17 +414,26 @@ PMAT graphBuild <span class="token parameter variable">-c</span> ./test1/assembl
 <li><code>*/assembly_result/PMATContigGraph.txt</code>, The assembly result contains contig linking relationships</li>
 <li><code>*/assembly_result/PMAT_mt_raw.gfa</code>, The initial assembly graph of mitogenome</li>
 <li><code>*/assembly_result/PMAT_mt_master.gfa</code>, The optimized assembly graph of mitogenome</li>
-<li><code>*/assembly_result/PMAT_pt_raw.gfa</code>, The initial assembly graph of chloroplast genome</li>
-<li><code>*/assembly_result/PMAT_pt_master.gfa</code>, The optimized assembly graph of chloroplast genome</li>
+<li><code>*/assembly_result/PMAT_pt_raw.gfa</code>, The initial assembly graph of the chloroplast genome</li>
+<li><code>*/assembly_result/PMAT_pt_master.gfa</code>, The optimized assembly graph of the chloroplast genome</li>
 </ul>
 </li>
 </ul>
-<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a><a name="C8">Version</a></h2><p>PMAT version 1.4.0 (23&#x2F;11&#x2F;12)<br><br>Updates:</p>
+<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a><a name="C8">Version</a></h2><p>PMAT version 1.5.0 (23&#x2F;11&#x2F;14)<br><br>Updates:</p>
 <ul>
-<li>In the new version, we’ve added ‘-tp’ for separate mitochondrial and chloroplast genome assembly.</li>
+<li>In this version, PMAT adds automatic unloop function.</li>
+</ul>
+<p>PMAT version 1.4.0 (23&#x2F;11&#x2F;12)<br><br>Updates:</p>
+<ul>
+<li>In this version, we add a ‘-tp’ parameter for separate mitochondrial and chloroplast genome assembly.</li>
+</ul>
+<p>PMAT version 1.3.0 (23&#x2F;9&#x2F;25)<br><br>Updates:</p>
+<ul>
+<li>In this version, Apptainer is used instead of Singularity. Please ensure that the Apptainer is correctly installed.</li>
+<li>In this version, you can perform multiple tasks simultaneously.</li>
 </ul>
 <h2 id="Citing-PMAT"><a href="#Citing-PMAT" class="headerlink" title="Citing PMAT"></a><a name="C9">Citing PMAT</a></h2><p>Bi C, Shen F, Han F, Qu Y, et al. PMAT: an efficient plant mitogenome assembly toolkit using ultra-low coverage HiFi sequencing data. Unpublished. <br><br>Bi C, Qu Y, Hou J, Wu K, Ye N, and Yin T. (2022). Deciphering the multi-chromosomal mitochondrial genome of Populus simonii. Front. Plant Sci. 13:914635.doi:10.3389&#x2F;fpls.2022.914635.</p>
-<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi, <a href="mailto:&#x62;&#105;&#x63;&#x68;&#x77;&#101;&#105;&#x40;&#110;&#106;&#102;&#117;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;">&#x62;&#105;&#x63;&#x68;&#x77;&#101;&#105;&#x40;&#110;&#106;&#102;&#117;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;</a><br>Fuchuan Han, <a href="mailto:&#x68;&#x61;&#x6e;&#102;&#99;&#x40;&#x63;&#x61;&#x66;&#46;&#x61;&#99;&#46;&#99;&#110;">&#x68;&#x61;&#x6e;&#102;&#99;&#x40;&#x63;&#x61;&#x66;&#46;&#x61;&#99;&#46;&#99;&#110;</a></p>
+<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Changwei Bi, <a href="mailto:&#98;&#105;&#x63;&#x68;&#x77;&#x65;&#105;&#x40;&#110;&#106;&#x66;&#117;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;">&#98;&#105;&#x63;&#x68;&#x77;&#x65;&#105;&#x40;&#110;&#106;&#x66;&#117;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;</a><br>Fuchuan Han, <a href="mailto:&#104;&#x61;&#110;&#x66;&#99;&#x40;&#99;&#97;&#x66;&#46;&#97;&#99;&#x2e;&#x63;&#x6e;">&#104;&#x61;&#110;&#x66;&#99;&#x40;&#99;&#97;&#x66;&#46;&#97;&#99;&#x2e;&#x63;&#x6e;</a></p>
 
     </div>
 

@@ -28,7 +28,7 @@
 <meta property="og:description" content="详细介绍一下我们的软件-PMAT">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-09T06:53:16.000Z">
-<meta property="article:modified_time" content="2023-11-12T03:11:20.995Z">
+<meta property="article:modified_time" content="2023-11-15T06:37:28.768Z">
 <meta property="article:author" content="Fuchuan Han">
 <meta name="twitter:card" content="summary">
 
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-12 11:11:20" itemprop="dateModified" datetime="2023-11-12T11:11:20+08:00">2023-11-12</time>
+                <time title="修改时间：2023-11-15 14:37:28" itemprop="dateModified" datetime="2023-11-15T14:37:28+08:00">2023-11-15</time>
               </span>
 
           
@@ -218,9 +218,9 @@
 <span class="token function">chmod</span> a+x PMAT
 PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>源代码安装</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/archive/refs/tags/v1.4.0.tar.gz
-<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> v1.4.0.tar.gz
-<span class="token builtin class-name">cd</span> PMAT-1.4.0/bin
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/bichangwei/PMAT/archive/refs/tags/v1.5.1.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> v1.5.1.tar.gz
+<span class="token builtin class-name">cd</span> PMAT-1.5.1/bin
 <span class="token function">chmod</span> a+x PMAT
 PMAT <span class="token parameter variable">--help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -244,7 +244,7 @@ PMAT <span class="token parameter variable">--help</span><span aria-hidden="true
 <span class="token operator">|</span>__<span class="token operator">|</span>       <span class="token operator">|</span>_<span class="token operator">|</span>    <span class="token punctuation">\</span>__/    <span class="token operator">|</span>_<span class="token operator">|</span> /_/          <span class="token punctuation">\</span>_<span class="token punctuation">\</span>      <span class="token operator">|</span>_<span class="token operator">|</span>      
 
 PMAT            an efficient assembly toolkit <span class="token keyword">for</span> plant mitochondrial genome
-Version         <span class="token number">1.4</span>.0
+Version         <span class="token number">1.5</span>.1
 Contributors    Bi,C. and Han,F.
 Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
@@ -310,19 +310,31 @@ PMAT graphBuild <span class="token parameter variable">-c</span> ./test1/assembl
 <li>运行时间</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">8 CPUs: 13m25.342s; 16 CPUs: 9m29.853s; 32 CPUs: 8m42.429s; 64 CPUs: 7m57.279s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre><code>一共会输出以下文件：
-- subsample/assembly_seq_subset.0.1.fasta *用于组装的数据*
-- subsample/assembly_seq.cut20K.fasta     *截断为长度为20kb的reads*
-- assembly_result/PMATAllContigs.fna      *组装结果contig序列文件*
-- assembly_result/PMATContigGraph.txt     *组装结果contig连接关系*
-- assembly_result/PMAT_mt_raw.gfa         *用于可视化的线粒体基因组组装初始结果*
-- assembly_result/PMAT_mt_master.gfa      *用于可视化的线粒体基因组组装优化结果*
-- assembly_result/PMAT_pt_raw.gfa         *用于可视化的叶绿体基因组组装初始结果*
-- assembly_result/PMAT_pt_master.gfa      *用于可视化的叶绿体基因组组装优化结果*
 
-&lt;p style=&quot;color: red&quot;&gt;&lt;b&gt;软件已经公布在github(https://github.com/bichangwei/PMAT)，期待大家宝贵的建议！&lt;/b&gt;&lt;/p&gt;
-</code></pre>
-
+<p>输出结果：</p>
+<ul>
+<li>subsample&#x2F;assembly_seq_subset.0.1.fasta <em>用于组装的数据</em></li>
+<li>subsample&#x2F;assembly_seq.cut20K.fasta     <em>截断为长度为20kb的reads</em></li>
+<li>assembly_result&#x2F;PMATAllContigs.fna      <em>组装结果contig序列文件</em></li>
+<li>assembly_result&#x2F;PMATContigGraph.txt     <em>组装结果contig连接关系</em></li>
+<li>assembly_result&#x2F;PMAT_mt_raw.gfa         <em>用于可视化的线粒体基因组组装初始结果</em></li>
+<li>assembly_result&#x2F;PMAT_mt_master.gfa      <em>用于可视化的线粒体基因组组装优化结果</em></li>
+<li>assembly_result&#x2F;PMAT_pt_raw.gfa         <em>用于可视化的叶绿体基因组组装初始结果</em></li>
+<li>assembly_result&#x2F;PMAT_pt_master.gfa      <em>用于可视化的叶绿体基因组组装优化结果</em></li>
+</ul>
+<h6 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h6><p>PMAT version 1.5.0 (23&#x2F;11&#x2F;14)<br>Updates:</p>
+<ul>
+<li>PMAT添加自动解环功能</li>
+</ul>
+<p>PMAT version 1.4.0 (23&#x2F;11&#x2F;12)<br>Updates:</p>
+<ul>
+<li>PMAT添加可选参数<code>-tp</code>用于组装指定类型的细胞器基因组</li>
+</ul>
+<p>PMAT version 1.3.0 (23&#x2F;9&#x2F;25)<br>Updates:</p>
+<ul>
+<li>使用apptainer代替singularity，并实现多个任务并行处理</li>
+</ul>
+<p style="color: red"><b>软件已经公布在github(https://github.com/bichangwei/PMAT)，期待大家宝贵的建议！</b></p>
     </div>
 
     
@@ -422,7 +434,7 @@ PMAT graphBuild <span class="token parameter variable">-c</span> ./test1/assembl
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">PMAT 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apptainer-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Apptainer 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">依赖软件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BD%93%E4%BD%BF%E7%94%A8HiFi%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E7%BB%84%E8%A3%85%E6%97%B6%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">当使用HiFi数据进行组装时，有以下依赖:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8EONT%E5%92%8Ccrl%E6%B5%8B%E5%BA%8F%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">对于ONT和crl测序数据，有以下依赖:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">PMAT 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">应用实例</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">PMAT 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apptainer-%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Apptainer 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">依赖软件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BD%93%E4%BD%BF%E7%94%A8HiFi%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E7%BB%84%E8%A3%85%E6%97%B6%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">当使用HiFi数据进行组装时，有以下依赖:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8EONT%E5%92%8Ccrl%E6%B5%8B%E5%BA%8F%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">对于ONT和crl测序数据，有以下依赖:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMAT-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">PMAT 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">更新日志</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
